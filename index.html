@@ -5,49 +5,52 @@
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/app.css">
-</head>
+    </head>
 <body>
 <div id="app">
     <section class="row">
         <div class="small-6 columns">
             <h1 class="text-center">TU</h1>
             <div class="healthbar">
-                <div class="healthbar text-center" style="background-color: goldenrod; margin: 0; color: white;">
-
+                <div class="healthbar text-center" v-bind:style="{backgroundColor: 'orange', margin: '0', color: 'white', width: playerHealth+'%'}">
+                    {{playerHealth}}
                 </div>
             </div>
         </div>
         <div class="small-6 columns">
             <h1 class="text-center">MONSTRUO</h1>
             <div class="healthbar">
-                <div class="healthbar text-center" style="background-color: rgb(0, 81, 128); margin: 0; color: white;">
-
+                <div class="healthbar text-center" v-bind:style="{backgroundColor: 'blue', margin: '0', color: 'white', width: monsterHealth+'%'}">
+                    {{monsterHealth}}
                 </div>
             </div>
         </div>
     </section>
-    <section class="row controls">
+    <section class="row controls" v-if="!gameIsRunning">
         <div class="small-12 columns">
-            <button id="start-game">EMPEZAR JUEGO NUEVO</button>
+            <button id="start-game" @click="startGame">EMPEZAR JUEGO NUEVO</button>
         </div>
     </section>
-    <section class="row controls">
+    <section class="row controls" v-else>
         <div class="small-12 columns">
-            <button id="attack">ATACAR</button>
-            <button id="special-attack">ATAQUE ESPECIAL</button>
-            <button id="heal">CURAR</button>
-            <button id="give-up">GIVE UP</button>
+            <button id="attack" @click="atacar()">ATACAR</button>
+            <button id="special-attack" @click="special()">ATAQUE ESPECIAL</button>
+            <button id="heal" @click="sanar()" >CURAR</button>
+            <button id="give-up" @click="rendirse()">GIVE UP</button>
         </div>
     </section>
     <section class="row log">
         <div class="small-12 columns">
             <ul>
-                <li>
-
+                <li v-for="turno in turnos" :class="{'player-turn': turnos.tipo='Jugador', 'monster-turn': turnos.tipo='Monstruo'}">                    
+                        {{turno.text}}
                 </li>
             </ul>
         </div>
     </section>
 </div>
+<script src="app.js"></script>
 </body>
 </html>
+
+
