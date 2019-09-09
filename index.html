@@ -28,15 +28,15 @@
     </section>
     <section class="row controls" v-if="!gameIsRunning">
         <div class="small-12 columns">
-            <button id="start-game" @click="startGame">EMPEZAR JUEGO NUEVO</button>
+            <button id="start-game" v-on:click="startGame">EMPEZAR JUEGO NUEVO</button>
         </div>
     </section>
     <section class="row controls" v-else>
         <div class="small-12 columns">
-            <button id="attack" @click="atacar()">ATACAR</button>
-            <button id="special-attack" @click="special()">ATAQUE ESPECIAL</button>
-            <button id="heal" @click="sanar()" >CURAR</button>
-            <button id="give-up" @click="rendirse()">GIVE UP</button>
+            <button id="attack" v-on:click="atacar()">ATACAR</button>
+            <button id="special-attack" v-on:click="special()">ATAQUE ESPECIAL</button>
+            <button id="heal" v-on:click="sanar()" >CURAR</button>
+            <button id="give-up" v-on:click="rendirse()">GIVE UP</button>
         </div>
     </section>
     <section class="row log">

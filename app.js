@@ -4,7 +4,8 @@ new Vue({
         playerHealth: 100,
         monsterHealth: 100,
         gameIsRunning: false,
-        // CONSTANTES
+        
+        // Constantes
         playerMin:5,
         playerMax:12,
         monsterMin:3,
@@ -12,6 +13,7 @@ new Vue({
         monsterSpecialMin:10,
         monsterSpecialMax:20,
         health:10,
+
         // Constantes x objetos
         turnos:[]
     },
